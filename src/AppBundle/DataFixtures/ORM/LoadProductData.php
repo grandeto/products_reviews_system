@@ -28,7 +28,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager){
         for($i = 0; $i < 3; $i++){
             $product = new Product();
-            $product->setTitle('Product'.$i+1);
+            $product->setTitle('Product'. ($i +1));
             $product->setContent($this->productContent[$i]);
             $product->setAuthor($this->getReference('user'));
 
