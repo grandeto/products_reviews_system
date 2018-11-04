@@ -17,7 +17,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface{
             if($i == 0) {
                 $user->setUsername('admin');
                 $user->setEmail('admin@admin.com');
-                $userAdmin->setRoles(array('ROLE_ADMIN'));
+                $user->setRoles(array('ROLE_ADMIN'));
             } else {
                 $user->setUsername('user'.$i);
                 $user->setEmail('user'.$i.'@user.com');
