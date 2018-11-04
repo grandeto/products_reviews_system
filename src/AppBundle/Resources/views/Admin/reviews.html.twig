@@ -24,6 +24,7 @@
                 <table class="table table-striped">
                     <tr>
                         <th>N°</th>
+                        <th>Product ID</th>
                         <th>Username</th>
                         <th>Date</th>
                         <th>Rating</th>
@@ -33,8 +34,9 @@
                     {% for review in  reviews %}
                         <tr>
                             <td>{{ loop.index }}</td>
+                            <td>{{ review.product.id }}</td>
                             <td>{{ review.author.username }}</td>
-                            <td>{{ review.date.date }}</td>
+                            <td>{{ review.date.date|date("d/m/y H:m:s") }}</td>
                             <td>{{ review.rating }}</td>
                             <td>{{ review.content }}</td>
                             <td>
