@@ -40,18 +40,19 @@ class UserService{
      */
     public function getTopFiveCommentingUsers(){
 
-        // $RAW_QUERY = 'SELECT username FROM user';
+        $RAW_QUERY = 'SELECT author_id, count(*) as count 
+            FROM review
+            WHERE author_id IS NOT NULL 
+            GROUP BY author_id
+            ORDER BY count DESC
+            LIMIT 5';
         
-        // $connection = $this->$em->getConnection();
-        // $statement = $connection->prepare($RAW_QUERY);
-        // $statement->execute();
+        $connection = $this->em->getConnection();
+        $statement = $connection->prepare($RAW_QUERY);
+        $statement->execute();
 
-        // $result = $statement->fetchAll();
-        // return $result;
-
-        return $this->userRepository->findBy(
-            array('username' => 'ASC')
-        );
+        $result = $statement->fetchAll();
+        return $result;
     }
 
     /**
