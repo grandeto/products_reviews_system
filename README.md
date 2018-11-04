@@ -10,6 +10,8 @@ Requirements Development Steps
 
 ### Step 2 : Developement Executing Fixtures
 
+Run ```php app/console doctrine:schema:update --force``` to create the tables
+
 You need to execute some developement fixtures, you can load them via the command line by using the doctrine:fixtures:load command :  
 ```bash
 php app/console doctrine:fixtures:load
