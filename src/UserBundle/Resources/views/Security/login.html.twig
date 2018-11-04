@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block app_title %}{{ parent() }} connexion{% endblock app_title %}
+
+{% block body %}
+    <section class="row row-centered animated bounceInDown">
+        <div class="col-xs-12 col-md-5 col-centered">
+            <div id="login">
+                <div id="login-title">
+                    <h1>Log In</h1>
+                </div>
+
+                <div id="login-form">
+                    <form action="{{ path("fos_user_security_check") }}" method="POST">
+                        <div class="form-group">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+                            <label><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required="required">
+                            <label><span class="glyphicon glyphicon-lock"></span> Password</label>
+                            <input type="password" id="password" name="_password" class="form-control" required="required"><br>
+                            <input type="submit" id="_submit" class="btn btn-success" name="_submit" value="Log In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}

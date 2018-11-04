@@ -1,0 +1,7 @@
+user_dashboard:
+    path:     /dashboard/user
+    defaults: { _controller: UserBundle:User:dashboardUser }
+
+user_delete:
+    path: /dashboard/user/{id}
+    defaults: { _controller: UserBundle:User:delete }

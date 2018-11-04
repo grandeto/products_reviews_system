@@ -1,0 +1,54 @@
+{% extends "::dashboard.html.twig" %}
+
+{% block dashboard_title %}{{ parent() }} {% endblock dashboard_title %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" data-toggle="tooltip" title="Home page">
+                <a href="{{ path("product_views") }}">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title title-1">Dashboard</h1>
+        </div>
+    </div>
+
+    <div class="row row-centered">
+        <div class="col-xs-8 col-md-8 col-centered">
+            <section id="main-dashboard">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="thumbnail  category-box">
+                            <a href="{{ path("product_dashboard") }}">
+                                <span class="glyphicon glyphicon-pencil"></span><br>
+                                Products
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="thumbnail  category-box">
+                            <a href="{{ path("review_dashboard") }}">
+                                <span class="glyphicon glyphicon-star"></span><br>
+                                Reviews
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="thumbnail  category-box">
+                            <a href="{{ path("user_dashboard") }}">
+                                <span class="glyphicon glyphicon-user"></span><br>
+                                Top 5 Users
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock body %}

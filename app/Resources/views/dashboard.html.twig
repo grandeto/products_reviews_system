@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block dashboard_title %} {% endblock dashboard_title %}</title>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% stylesheets filter="cssrewrite" "public/css/design.css" %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    </head>
+    <body>
+        <script>
+            $(function (){
+                $('[data-toggle="tooltip"]').tooltip({
+                    'placement': 'bottom'
+                })
+            });
+        </script>
+        
+        <div class="container-fluid">
+            <!-- Header logo 
+            <div id="header-logo">
+                <img src="" class="img-responsive" alt="logo">
+            </div>  -->
+
+            <!-- Main body -->
+            {% block body %}{% endblock body %}
+
+            <hr>
+
+            <!-- Footer -->
+            <footer>
+                <p></p>
+                <p><small></small></p>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+##
+# Admin routing
+##
+admin_dashboard:
+    path:    /dashboard
+    defaults: { _controller: AppBundle:Admin:view }
+
+##
+# Product routing
+##
+product_views:
+    path:     /
+    defaults: { _controller: AppBundle:Product:views}
+
+product_view:
+    path:     /product/{id}
+    defaults: { _controller: AppBundle:Product:view }
+
+product_dashboard:
+    path:     /dashboard/product
+    defaults: { _controller: AppBundle:Product:dashboardProduct }
+
+product_add:
+    path:     /dashboard/product/add
+    defaults: { _controller: AppBundle:Product:edit }
+
+product_edit:
+    path:     /dashboard/product/edit/{id}
+    defaults: { _controller: AppBundle:Product:edit }
+
+product_delete:
+    path:     /dashboard/product/delete/{id}
+    defaults: { _controller: AppBundle:Product:delete }
+
+###
+# Review routing
+###
+review_views:
+    path: /{id}/review/views
+    defaults: { _controller: AppBundle:Review:views }
+
+review_add:
+    path: /{id}/review/add
+    defaults: { _controller: AppBundle:Review:add }
+
+review_delete:
+    path: /{product}/review/{review}/delete
+    defaults: { _controller: AppBundle:Review:delete }
+
+review_dashboard:
+    path:     /dashboard/reviews
+    defaults: { _controller: AppBundle:Review:dashboardReviews }
+
+review_approve:
+    path: /dashboard/review/{id}
+    defaults: { _controller: AppBundle:Review:approve }
+
+review_unapprove:
+    path: /{id}/review/unapprove
+    defaults: { _controller: AppBundle:Review:unapprove }

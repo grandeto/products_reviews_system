@@ -1,0 +1,53 @@
+{% extends "::dashboard.html.twig" %}
+
+{% block dashboard_title %}{{ parent() }} {% endblock dashboard_title %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("UserBundle:User:toolbar.html.twig") }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title title-1">Unapproved Reviews</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if reviews is empty %}
+                <p>No reviews yet</p>
+
+            {% else %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>N°</th>
+                        <th>Username</th>
+                        <th>Date</th>
+                        <th>Rating</th>
+                        <th>Content</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for review in  reviews %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ review.author.username }}</td>
+                            <td>{{ review.date.date }}</td>
+                            <td>{{ review.rating }}</td>
+                            <td>{{ review.content }}</td>
+                            <td>
+                                <button class="btn btn-success" data-toggle="tooltip" title="Approve">
+                                    <a href="{{ path("review_approve", { 'id' : review.id }) }}">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}

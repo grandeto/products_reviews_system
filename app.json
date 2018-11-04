@@ -1,0 +1,5 @@
+{
+  "name": "Administrable Blog",
+  "description": "A Symfony2 administrable blog",
+  "addons": ["heroku-postgresql:hobby-dev"]
+}

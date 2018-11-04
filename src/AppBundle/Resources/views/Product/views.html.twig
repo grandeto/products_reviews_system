@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block app_title %}{{ parent() }} {% endblock app_title %}
+
+{% block body %}
+	{% if products is empty %}
+		<p>Aucun product n'a été posté. Revenez plus tard.</p>
+
+	{% else %}
+		{% for product in  products %}
+			<!-- Product list-->
+			<section class="row article-box animated bounceInLeft">
+
+				<!-- Product basic informations -->
+				<div class="col-md-8">
+					<h2 class="title title-2"><a href="{{ path("product_view", { "id" : product.id }) }}">{{ product.title }}</a></h2>
+
+					<span class="glyphicon glyphicon-user"></span> {{ product.author }}
+					<span class="glyphicon glyphicon-calendar"></span> {{ product.date|date("d/m/Y") }}
+					
+
+					<hr>
+				</div>
+			</section>
+		{% endfor %}
+	{% endif %}
+{% endblock body %}

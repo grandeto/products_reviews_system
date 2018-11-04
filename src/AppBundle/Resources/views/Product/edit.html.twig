@@ -1,0 +1,54 @@
+{% extends "::dashboard.html.twig" %}
+
+{% block dashboard_title %}{{ parent() }}Edition d'un article{% endblock dashboard_title %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("AppBundle:Product:toolbar.html.twig") }}
+        </div>
+    </div>
+
+    <div class="row-centered">
+        <div class="col-xs-12 col-md-8 col-centered">
+            <div class="box-wrapper">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="title title-1">Add Product</h1>
+                    </div>
+                </div>
+
+                {{ form_start(form) }}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_label(form.title, "Title") }}
+                                {{ form_widget(form.title, { 'attr' : { 'class' : 'form-control' } }) }}
+                                {{ form_errors(form.title) }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_label(form.content, "Content") }}
+                                {{ form_widget(form.content, { 'attr' : { 'class' : 'form-control' } }) }}
+                                {{ form_errors(form.content) }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_label(form.published, "Published") }}
+                                {{ form_widget(form.published) }}
+                                {{ form_errors(form.published) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success" type="submit">Save</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

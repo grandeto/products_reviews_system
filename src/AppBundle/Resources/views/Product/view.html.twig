@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+{% block app_title %}{{ parent() }}{{ product.title }}{% endblock app_title %}
+
+{% block body %}
+	<!-- Product -->
+	<article id="product-wrapper" class="row">
+		<!-- Product content -->
+		<div class="col-md-8">
+			<div class="box-wrapper">
+		        <div class="row">
+		            <div class="col-md-12">
+                        <!-- Product basic informations -->
+		                <h1 class="title title-1">{{ product.title }}</h1>
+
+                        <span class="glyphicon glyphicon-user"></span> {{ product.author }}
+                        <span class="glyphicon glyphicon-calendar"></span> {{ product.date|date("d/m/Y") }}
+
+                        <hr>
+
+                        <p>{{ product.content }}</p>
+
+                        <hr>
+                    </div>
+		        </div>
+			</div>
+
+			<!-- Review -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box-wrapper">
+                        <h2 class="title title-2">Post a review</h2>
+
+                        <!-- Add a review -->
+                        <!-- User logged -->
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            {{ render(url('review_add', { 'id' : product.id })) }}
+                            <!-- User not logged -->
+                        {% else %}
+                            <p>You need to be logged in to post a review. Please <a href="{{ path("fos_user_security_login") }}">Log In</a>.</p>
+                        {% endif %}
+
+                        <!-- Reviews list -->
+                        <div id="reviews-list"></div>
+
+                        <h2 class="title title-2">{{ "Reviews" }}</h2>
+
+                        {{ render(url('review_views', { 'id' : product.id })) }}
+					</div>
+				</div>
+			</div>
+		</div>	
+	</article>
+
+	<!-- Navigate buttons -->
+	<a href="#reviews-list">
+		<button id="navigate-button-review" class="navigate-button btn btn-success">
+			<span class="glyphicon glyphicon-review"></span>
+		</button>
+	</a>
+{% endblock body %}

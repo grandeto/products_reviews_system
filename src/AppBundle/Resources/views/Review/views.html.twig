@@ -1,0 +1,26 @@
+{% if avarageRaging %}
+    <div class="row">
+        <div class="col-md-8">
+            <span class="bold">Avarage rating: {{ avarageRaging }}</span>
+            <hr>
+        </div>
+    </div>
+{% endif %}
+{% if reviews %}
+    {% for review in reviews %}
+        <div class="row">
+            <div class="col-md-8">
+                <span class="bold">{{ review.author }}</span> made a review <span class="italic">{{ review.date|date("d/m/Y") }}</span>
+                <div class="justify">Rating: {{ review.rating }}</div>
+                <div class="justify">Review: {{ review.content }}</div>
+                <hr>
+            </div>
+        </div>	
+    {% endfor %}
+{% else %}
+    <div class="row">
+        <div class="col-md-12">
+            <p>Still no reviews for this product.</p>
+        </div>
+    </div>
+{% endif %}

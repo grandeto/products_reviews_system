@@ -1,0 +1,43 @@
+{% extends "::dashboard.html.twig" %}
+
+{% block dashboard_title %}{{ parent() }}Top 5 Commenting Users{% endblock dashboard_title %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include("UserBundle:User:toolbar.html.twig") }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title title-1">Top 5 Commenting Users</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if users is empty %}
+                <p>Still no comments have been made.</p>
+
+            {% else %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>N°</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>E-mail</th>
+                    </tr>
+                    {% for user in  users %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}

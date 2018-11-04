@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block app_title %} {% endblock app_title %}</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    {% stylesheets filter="cssrewrite" "public/css/design.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+</head>
+<body>
+<div class="container-fluid">
+    <!-- Header logo 
+    <div id="header-logo">
+        <img src="" class="img-responsive" alt="logo">
+    </div> -->
+
+    <!-- Nav -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{ path("product_views") }}">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                    </li>
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        <li>
+                            <a href="{{ path("fos_user_security_logout") }}">
+                                <span class="glyphicon glyphicon-off red"></span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path("fos_user_security_login") }}">
+                                <span class="glyphicon glyphicon-off green"></span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li>
+                            <a class="purple" href="{{ path("admin_dashboard") }}">Admin</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main body -->
+    {% block body %}{% endblock body %}
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <p class="text-center"></p>
+        <p class="text-center"><small></small></p>
+    </footer>
+</div>
+
+<script src="{{ asset("public/js/global-functions.js") }}"></script>
+
+</body>
+</html>
