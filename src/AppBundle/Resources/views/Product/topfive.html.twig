@@ -1,6 +1,6 @@
 {% extends "::dashboard.html.twig" %}
 
-{% block dashboard_title %}{{ parent() }}Top 5 Users{% endblock dashboard_title %}
+{% block dashboard_title %}{{ parent() }}Top 5 Products{% endblock dashboard_title %}
 
 {% block body %}
     <div class="row">
@@ -11,25 +11,25 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="title title-1">Top 5 Users</h1>
+            <h1 class="title title-1">Top 5 Products</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            {% if users is empty %}
+            {% if products is empty %}
                 <p>Still no ratings have been left.</p>
 
             {% else %}
                 <table class="table table-striped">
                     <tr>
-                        <th>User ID</th>
-                        <th>Reviews count</th>
+                        <th>Product ID</th>
+                        <th>Rating</th>
                     </tr>
-                    {% for user in  users %}
+                    {% for product in  products %}
                         <tr>
-                            <td>{{ user.author_id }}</td>
-                            <td>{{ user.count }}</td>
+                            <td><a href="{{ path("product_view", { "id" : product.product_id }) }}">{{ product.product_id }}</a></td>
+                            <td>{{ product.rate }}</td>
                         </tr>
                     {% endfor %}
                 </table>

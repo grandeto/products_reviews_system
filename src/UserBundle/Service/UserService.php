@@ -35,10 +35,10 @@ class UserService{
     }
 
     /**
-     * Returns top 5 commenting users sorted by ASC username
+     * Returns top 5 commenting users sorted by DESC comments count
      * @return User array
      */
-    public function getTopFiveCommentingUsers(){
+    public function getTopFiveReviewingUsers(){
 
         $RAW_QUERY = 'SELECT author_id, count(*) as count 
             FROM review

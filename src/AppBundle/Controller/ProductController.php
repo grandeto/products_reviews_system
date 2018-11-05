@@ -56,6 +56,14 @@ class ProductController extends Controller
         ));
     }
 
+    public function dashboardTopFiveProductsAction(){
+        $products = $this->productService->getTopFiveRatedProducts();
+
+        return $this->render('AppBundle:Product:topfive.html.twig', array(
+            'products' => $products
+        ));
+    }
+
     /**
      * Add a new Product or edit an existing Product
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

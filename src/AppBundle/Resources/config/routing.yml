@@ -20,6 +20,10 @@ product_dashboard:
     path:     /dashboard/product
     defaults: { _controller: AppBundle:Product:dashboardProduct }
 
+topfive_dashboard:
+    path:     /dashboard/top5products
+    defaults: { _controller: AppBundle:Product:dashboardTopFiveProducts }
+
 product_add:
     path:     /dashboard/product/add
     defaults: { _controller: AppBundle:Product:edit }

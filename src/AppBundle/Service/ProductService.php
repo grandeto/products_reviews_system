@@ -54,6 +54,26 @@ class ProductService{
     }
 
     /**
+     * Returns top 5 rated products sorted by DESC avarage rating
+     * @return Product array
+     */
+    public function getTopFiveRatedProducts(){
+
+        $RAW_QUERY = 'SELECT product_id, avg(rating) as rate
+                        FROM review
+                        GROUP BY product_id
+                        ORDER BY rate DESC
+                        LIMIT 5';
+        
+        $connection = $this->em->getConnection();
+        $statement = $connection->prepare($RAW_QUERY);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
+    /**
      * Save an Product object
      * @param Product $product
      */

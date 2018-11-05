@@ -16,7 +16,7 @@ class UserController extends Controller{
     }
 
     public function dashboardUserAction(){
-        $users = $this->userService->getTopFiveCommentingUsers();
+        $users = $this->userService->getTopFiveReviewingUsers();
 
         return $this->render('UserBundle:User:user.html.twig', array(
             'users' => $users
